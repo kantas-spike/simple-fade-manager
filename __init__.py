@@ -47,21 +47,6 @@ class SIMPLE_FADE_MANAGER_OT_AddFade(bpy.types.Operator):
         return {"FINISHED"}
 
 
-class SIMPLE_FADE_MANAGER_OT_ClearFade(bpy.types.Operator):
-    bl_idname = "simple_fade_manager.clear_fade"
-    bl_label = "フェードを削除"
-    bl_description = "ストリップからフェードを削除します"
-    bl_options = {"REGISTER", "UNDO"}
-
-    @classmethod
-    def poll(cls, context):
-        return len(context.selected_sequences) > 0
-
-    def execute(self, context: Context) -> Set[str] | Set[int]:
-        bpy.ops.sequencer.fades_clear()
-        return {"FINISHED"}
-
-
 class SIMPLE_FADE_MANAGER_OT_AppendInfoToFadeList(bpy.types.Operator):
     bl_idname = "simple_fade_manager.append_info_to_fade_list"
     bl_label = "追加"
@@ -180,7 +165,7 @@ class SIMPLE_FADE_MANAGER_PT_ManageFadeList(bpy.types.Panel):
             op.fade_no = scene.fade_no
         col = layout.column(align=True)
         col.separator()
-        col.operator(SIMPLE_FADE_MANAGER_OT_ClearFade.bl_idname)
+        col.operator("sequencer.fades_clear", text="フェードを削除")
 
 
 class SIMPLE_FADE_MANAGER_FadeInfo(bpy.types.PropertyGroup):
@@ -199,7 +184,6 @@ class SIMPLE_FADE_MANAGER_FadeInfo(bpy.types.PropertyGroup):
 
 classes = [
     SIMPLE_FADE_MANAGER_OT_AddFade,
-    SIMPLE_FADE_MANAGER_OT_ClearFade,
     SIMPLE_FADE_MANAGER_OT_AppendInfoToFadeList,
     SIMPLE_FADE_MANAGER_OT_RemoveInfoFromFadeList,
     SIMPLE_FADE_MANAGER_UL_FadeInfoList,
