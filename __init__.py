@@ -19,7 +19,7 @@ bl_info = {
 
 class SIMPLE_FADE_MANAGER_OT_AddFade(bpy.types.Operator):
     bl_idname = "simple_fade_manager.add_fade"
-    bl_label = "フェードを追加"
+    bl_label = "ストリップにフェードを追加"
     bl_description = "ストリップにフェードを追加します"
     bl_options = {"REGISTER"}
 
@@ -165,7 +165,7 @@ class SIMPLE_FADE_MANAGER_PT_ManageFadeList(bpy.types.Panel):
             op.fade_no = scene.fade_no
         col = layout.column(align=True)
         col.separator()
-        col.operator("sequencer.fades_clear", text="フェードを削除")
+        col.operator("sequencer.fades_clear", text="ストリップからフェードを削除")
 
 
 class SIMPLE_FADE_MANAGER_FadeInfo(bpy.types.PropertyGroup):
