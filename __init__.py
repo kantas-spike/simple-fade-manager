@@ -51,7 +51,7 @@ class SIMPLE_FADE_MANAGER_OT_AppendInfoToFadeList(bpy.types.Operator):
     bl_idname = "simple_fade_manager.append_info_to_fade_list"
     bl_label = "追加"
     bl_description = "フェードリストに情報を追加"
-    bl_options = {"REGISTER", "UNDO"}
+    bl_options = {"REGISTER"}
 
     def execute(self, context: Context) -> Set[str] | Set[int]:
         scene = context.scene
@@ -66,7 +66,7 @@ class SIMPLE_FADE_MANAGER_OT_RemoveInfoFromFadeList(bpy.types.Operator):
     bl_idname = "simple_fade_manager.remove_info_from_fade_list"
     bl_label = "削除"
     bl_description = "フェードリストから情報を削除"
-    bl_options = {"REGISTER", "UNDO"}
+    bl_options = {"REGISTER"}
 
     @classmethod
     def poll(cls, context):
